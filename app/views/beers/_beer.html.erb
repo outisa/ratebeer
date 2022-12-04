@@ -1,0 +1,16 @@
+<div id="<%= dom_id beer %>">
+  <p>
+    <strong>Name:</strong>
+    <%= link_to beer.name, beer %>
+  </p>
+
+  <p>
+    <strong>Style:</strong>
+    <%= beer.style %>
+  </p>
+
+  <p>
+    <strong>Brewery:</strong>
+    <%= beer.brewery.name %>
+  </p>
+</div>
