@@ -1,8 +1,7 @@
 <div id="<%= dom_id beer %>">
-  <p>
-    <strong>Name:</strong>
-    <%= link_to beer.name, beer %>
-  </p>
+  <h2>
+    <%= beer.name %>
+  </h2>
 
   <p>
     <strong>Style:</strong>
@@ -11,6 +10,6 @@
 
   <p>
     <strong>Brewery:</strong>
-    <%= beer.brewery.name %>
+    <%= link_to beer.brewery.name, beer.brewery %>
   </p>
 </div>
