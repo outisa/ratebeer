@@ -2,7 +2,9 @@ module RatingAverage
   extend ActiveSupport::Concern
 
   def average_rating
-    avg = ratings.pluck(:score).reduce(0) {|s, score| s+score} /ratings.count
+    return 0 if ratings.empty?
+
+    avg = ratings.pluck(:score).reduce(0) { |s, score| s + score } / ratings.count.to_f
     avg.to_f.round(2)
   end
 end

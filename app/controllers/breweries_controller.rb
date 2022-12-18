@@ -1,5 +1,5 @@
 class BreweriesController < ApplicationController
-  before_action :set_brewery, only: %i[ show edit update destroy ]
+  before_action :set_brewery, only: %i[show edit update destroy]
   before_action :authenticate, only: [:destroy]
 
   # GET /breweries or /breweries.json
@@ -59,24 +59,25 @@ class BreweriesController < ApplicationController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
-    def set_brewery
-      @brewery = Brewery.find(params[:id])
-    end
+  def set_brewery
+    @brewery = Brewery.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def brewery_params
-      params.require(:brewery).permit(:name, :year)
-    end
+  # Only allow a list of trusted parameters through.
+  def brewery_params
+    params.require(:brewery).permit(:name, :year)
+  end
 
-    def authenticate
-      admin_accounts = { "pekka" => "beer", "arto" => "foobar", "matti" => "ittam", "vilma" => "kangas" }
-      authenticate_or_request_with_http_basic do |username, password|
-        passw = admin_accounts[username]
-        username_exist = admin_accounts.keys.keep_if{|e| e == username}
-        raise "Wrong username or password" unless username_exist[0] == username and password == passw
-    
-        return true
-      end
+  def authenticate
+    admin_accounts = { "pekka" => "beer", "arto" => "foobar", "matti" => "ittam", "vilma" => "kangas" }
+    authenticate_or_request_with_http_basic do |username, password|
+      passw = admin_accounts[username]
+      username_exist = admin_accounts.keys.keep_if{ |e| e == username }
+      raise "Wrong username or password" unless username_exist[0] == username && password == passw
+
+      return true
     end
+  end
 end
