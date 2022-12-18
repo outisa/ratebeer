@@ -2,6 +2,13 @@
 
 <ul>
  <% @ratings.each do |rating| %>
-   <li> <%= rating.beer.name.concat(' ').concat(rating.score.to_s) %> </li>
+   <li>
+    <%= rating.beer.name.concat(' ').concat(rating.score.to_s) %>
+    <%= button_to 'delete', rating_path(rating.id), method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } } %>
+   </li>
  <% end %>
 </ul>
+
+<div>
+  <%= link_to "Add new rating", new_rating_path %>
+</div>

@@ -17,8 +17,8 @@
   <% else %>
     <p><%= 
       "Beer has "
-      .concat(beer.ratings.count.to_s)
-      .concat(" ratings with an average of ")
+      .concat(pluralize(beer.ratings.count,'rating'))
+      .concat(" with an average of ")
       .concat(beer.average_rating.to_s)
     %></p>
   <% end %>
