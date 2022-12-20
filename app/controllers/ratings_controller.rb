@@ -14,12 +14,16 @@ class RatingsController < ApplicationController
   end
 
   def create
-    rating = Rating.create params.require(:rating).permit(:score, :beer_id)
-
-    # talletetaan tehty reittaus sessioon
-    session[:last_rating] = "#{rating.beer.name} #{rating.score} points"
-
-    redirect_to ratings_path
+    @rating = Rating.new params.require(:rating).permit(:score, :beer_id)
+    @rating.user = current_user
+  
+    if @rating.save
+      session[:last_rating] = Beer.find_by(id: @rating.beer_id).name
+      redirect_to user_path current_user
+    else
+      @beers = Beer.all
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -31,10 +35,10 @@ class RatingsController < ApplicationController
   private
 
   def set_rating
-    @rating = Rating.includes(:Beer).joins(:Beer).find(params[:id])
+    @rating = Rating.includes(:Beer).joins(:Beer).includes(:User).joins.(:User).find(params[:id])
   end
 
   def rating_params
-    params.reqiure(:rating).permit(:score, :beer)
+    params.reqiure(:rating).permit(:score, :beer, :user)
   end
 end
