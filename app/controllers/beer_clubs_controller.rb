@@ -1,5 +1,5 @@
 class BeerClubsController < ApplicationController
-  before_action :set_beer_club, only: %i[ show edit update destroy ]
+  before_action :set_beer_club, only: %i[show edit update destroy]
 
   # GET /beer_clubs or /beer_clubs.json
   def index
