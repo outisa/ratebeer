@@ -1,7 +1,5 @@
 class ChangeDataTypeForFieldname < ActiveRecord::Migration[7.0]
   def change
-    change_table :beer_clubs do |t|
-      t.change :founded, :integer
-    end
+    change_column :beer_clubs, :founded, :integer, using: 'founded::integer'
   end
 end
