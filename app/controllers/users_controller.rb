@@ -37,11 +37,11 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1 or /users/1.json
   def update
     respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
-        format.json { render :show, status: :ok, location: @user }
+      if user_params[:username].nil? && @user == current_user && @user.update(user_params)
+        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.json { head :no_content }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html { redirect_to @user, notice: "Unauthorized" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -49,11 +49,18 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
-    @user.destroy
-
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
-      format.json { head :no_content }
+    if current_user == @user
+      @user.destroy 
+      session[:user_id] = nil
+      respond_to do |format|
+        format.html { redirect_to users_url, notice: "User was successfully destroyed." }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @user, notice: "Unauthorized" }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -66,6 +73,6 @@ class UsersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def user_params
-    params.require(:user).permit(:username)
+    params.require(:user).permit(:username, :beer_club, :password, :password_confirmation)
   end
 end

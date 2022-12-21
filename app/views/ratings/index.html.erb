@@ -10,5 +10,7 @@
 </ul>
 
 <div>
-  <%= link_to "Add new rating", new_rating_path %>
+  <% if current_user %>
+    <%= link_to "Add new rating", new_rating_path %>
+  <% end %>
 </div>

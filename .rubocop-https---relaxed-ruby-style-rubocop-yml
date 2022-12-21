@@ -146,8 +146,8 @@ Lint/AssignmentInCondition:
   StyleGuide: https://relaxed.ruby.style/#lintassignmentincondition
 
 Layout/LineLength:
-  Enabled: true
+  Enabled: false
 
 Metrics:
-  Enabled: true
+  Enabled: false
 
