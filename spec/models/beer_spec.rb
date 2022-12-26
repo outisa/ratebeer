@@ -21,7 +21,7 @@ RSpec.describe Beer, type: :model do
 
   describe "with a valid field values a beer" do
     let(:test_brewery) { Brewery.new name: "test", year: 2000 }
-    let(:beer){ Beer.create name: "Outi's Special", style: "IPA", brewery: test_brewery }
+    let(:beer){ Beer.create name: "Special", style: "IPA", brewery: test_brewery }
 
     it "is saved" do
       expect(beer).to be_valid
