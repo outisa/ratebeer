@@ -16,6 +16,14 @@
         .concat(", average rating ")
         .concat(@user.average_rating.to_s)
       %></p>
+      <p><%= 
+        "Favorite style is "
+        .concat(@user.favorite_style)
+      %></p>
+      <p><%= 
+        "Favorite brewery is "
+        .concat(@user.favorite_brewery.name)
+      %></p>
     <% end %>
   <p>
     <strong>Member of:</strong>

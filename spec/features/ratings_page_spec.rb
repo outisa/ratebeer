@@ -26,6 +26,7 @@ describe "Rating" do
     expect(beer1.average_rating).to eq(15.0)
   end
 end
+
 describe "Ratings are shown correctly" do
   let!(:brewery) { FactoryBot.create :brewery, name: "Koff" }
   let!(:beer1) { FactoryBot.create :beer, name: "iso 3", brewery:brewery }
@@ -49,26 +50,5 @@ describe "Ratings are shown correctly" do
     expect(page).to have_content "iso 3 44 Pekka"
     expect(page).to have_content "iso 3 9 Minna"
     expect(page).to have_content "Karhu 10 Pekka"
-  end
-
-  it "Ratings are shown in the user page" do
-    visit user_path user
-    expect(page).to have_content "Ratings:"
-    expect(page).to have_content "Has made 3 ratings, average rating 24.67"
-    expect(page).to have_content "iso 3 20"
-    expect(page).to have_content "iso 3 44"
-    expect(page).not_to have_content "iso 3 9 "
-    expect(page).to have_content "Karhu 10"
-  end
-
-  it "Signed in user can remove rating" do
-    visit user_path user
-    expect(page).to have_content "Has made 3 ratings, average rating 24.67"
-    expect(page).to have_content "iso 3 20"
-    expect(user.ratings.count).to eq(3)
-    page.first(:link, "delete").click
-    expect(page).to have_content "Has made 2 ratings, average rating 27.0"
-    expect(page).not_to have_content "iso 3 20"
-    expect(user.ratings.count).to eq(2)
   end
 end
