@@ -188,11 +188,16 @@
         "lines": [
           1,
           1,
+          1,
           null,
           1,
-          161,
+          4,
           null,
-          143,
+          null,
+          1,
+          171,
+          null,
+          148,
           null,
           null
         ]
@@ -318,6 +323,7 @@
           4,
           4,
           null,
+          1,
           1,
           1,
           null,
@@ -465,17 +471,6 @@
           1,
           0,
           null,
-          null,
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          null,
           null
         ]
       },
@@ -549,6 +544,7 @@
       },
       "/home/ousavola/wepa_ruby_on_rails/ratebeer/app/controllers/beer_clubs_controller.rb": {
         "lines": [
+          0,
           0,
           0,
           null,
@@ -628,7 +624,7 @@
         "lines": [
           0,
           0,
-          null,
+          0,
           null,
           0,
           0,
@@ -729,6 +725,6 @@
         }
       }
     },
-    "timestamp": 1672090333
+    "timestamp": 1672094641
   }
 }

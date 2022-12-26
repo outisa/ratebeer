@@ -5,6 +5,7 @@ class BeersController < ApplicationController
   end
   before_action :set_beer, only: %i[show edit update destroy]
   before_action :set_breweries_and_styles_for_template, only: %i[create edit new]
+  before_action :ensure_that_signed_in, except: [:index, :show]
 
   # GET /beers or /beers.json
   def index

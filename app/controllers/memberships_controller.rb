@@ -1,6 +1,6 @@
 class MembershipsController < ApplicationController
   before_action :set_membership, only: %i[show edit update destroy]
-
+  before_action :ensure_that_signed_in, except: [:show]
   # GET /memberships or /memberships.json
   def index
     @memberships = Membership.all

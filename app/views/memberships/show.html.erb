@@ -3,8 +3,8 @@
 <%= render @membership %>
 
 <div>
-  <%= link_to "Edit this membership", edit_membership_path(@membership) %> |
+  <%= link_to("Edit this membership", edit_membership_path(@membership)) unless current_user.nil? %> |
   <%= link_to "Back to memberships", memberships_path %>
 
-  <%= button_to "Destroy this membership", @membership, method: :delete %>
+  <%= button_to("Destroy this membership", @membership, method: :delete) unless current_user.nil? %>
 </div>
