@@ -1,7 +1,7 @@
 class BeersController < ApplicationController
   def set_breweries_and_styles_for_template
     @breweries = Brewery.all
-    @styles = ["Weizen", "Lager", "Pale ale", "IPA", "Porter", "Lowalcohol"]
+    @styles = Style.all
   end
   before_action :set_beer, only: %i[show edit update destroy]
   before_action :set_breweries_and_styles_for_template, only: %i[create edit new]
@@ -49,7 +49,7 @@ class BeersController < ApplicationController
         format.json { render :show, status: :ok, location: @beer }
       else
         @breweries = Brewery.all
-        @styles = ["Weizen", "Lager", "Pale ale", "IPA", "Porter", "Lowalcohol"]
+        @styles = Style.all
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @beer.errors, status: :unprocessable_entity }
       end
@@ -70,11 +70,11 @@ class BeersController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_beer
-    @beer = Beer.includes(:brewery).joins(:brewery).find(params[:id])
+    @beer = Beer.includes(:brewery).joins(:brewery).includes(:style).joins(:style).find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
   def beer_params
-    params.require(:beer).permit(:name, :style, :brewery_id, :brewery)
+    params.require(:beer).permit(:name, :style_id, :brewery_id, :brewery, :style)
   end
 end

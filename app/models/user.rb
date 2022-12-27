@@ -37,7 +37,7 @@ class User < ApplicationRecord
     return nil if ratings.empty?
 
     beer = find_beer
-    Beer.find_by(id: beer).style
+    Beer.includes(:style).joins(:style).find_by(id: beer).style.name
   end
 
   def favorite_brewery
