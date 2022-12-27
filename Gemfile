@@ -18,6 +18,9 @@ group :production do
    gem 'pg'
 end
 
+# For HTTP calls  https://github.com/jnunemaker/httparty
+gem 'httparty'
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
@@ -83,4 +86,5 @@ group :test do
   gem "webdrivers"
   gem 'launchy'
   gem 'simplecov', require: false
+  gem 'webmock'
 end
