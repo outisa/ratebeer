@@ -16,6 +16,7 @@ class SessionsController < ApplicationController
   def destroy
     # nollataan sessio
     session[:user_id] = nil
+    session[:place_name] = nil
     redirect_to :root
   end
 end
