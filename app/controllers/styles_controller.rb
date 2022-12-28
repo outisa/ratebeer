@@ -47,7 +47,6 @@ class StylesController < ApplicationController
       format.html { redirect_to styles_url, notice: "Style was successfully destroyed." }
       format.json { head :no_content }
     end
-
   end
 
   private
