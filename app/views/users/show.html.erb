@@ -41,7 +41,7 @@
       <li>
         <%= rating.to_s %>
         <% if current_user && current_user.username == @user.username %>
-          <%= link_to 'delete', rating_path(rating.id), method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } } %>
+          <%= link_to 'delete', rating_path(rating), data: {turbo_method: :delete}%>
         <% end %>
       </li>
     <% end %>
@@ -49,7 +49,7 @@
 
   <%= link_to "Back to users", users_path %>
   <% if @user == current_user%>
-    <%= link_to "Edit this user", edit_user_path(@user) %> |
-    <%= button_to "Destroy this user", @user, method: :delete %>
+    | <%= link_to "Edit this user", edit_user_path(@user) %>
+    <%= button_to "Destroy this user", @user, method: :delete,  class:"btn btn-danger" %>
   <% end %>
 </div>

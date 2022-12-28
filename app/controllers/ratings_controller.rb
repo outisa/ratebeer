@@ -1,4 +1,5 @@
 class RatingsController < ApplicationController
+  before_action :set_rating, only: %i[destroy]
   # Get /ratings
   def index
     @ratings = Rating.all
@@ -27,15 +28,14 @@ class RatingsController < ApplicationController
   end
 
   def destroy
-    rating = Rating.find(params[:id])
-    rating.delete if current_user == rating.user
+    @rating.destroy if current_user == @rating.user
     redirect_to user_path(current_user)
   end
 
   private
 
   def set_rating
-    @rating = Rating.includes(:Beer).joins(:Beer).includes(:User).joins(:User).find(params[:id])
+    @rating = Rating.find(params[:id])
   end
 
   def rating_params
