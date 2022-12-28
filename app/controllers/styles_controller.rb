@@ -6,7 +6,7 @@ class StylesController < ApplicationController
   end
 
   def show
-    @beers = Beer.find_by(style_id: @style.id)
+    @beers = Beer.all.select { |beer| beer.style_id == @style.id }
   end
 
   def new
@@ -18,6 +18,7 @@ class StylesController < ApplicationController
 
   def create
     @style = Style.new(style_params)
+    @beers = Beer.all.select { |beer| beer.style_id == @style.id }
     respond_to do |format|
       if @style.save
         format.html { redirect_to style_url(@style), notice: "Style was successfully created." }
@@ -30,6 +31,7 @@ class StylesController < ApplicationController
   end
 
   def update
+    @beers = Beer.all.select { |beer| beer.style_id == @style.id }
     respond_to do |format|
       if style_params[:name].nil? && @style.update(style_params)
         format.html { redirect_to @style, notice: 'Style was successfully updated.' }

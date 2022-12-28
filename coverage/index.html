@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2022-12-28T12:45:09+02:00">2022-12-28T12:45:09+02:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2022-12-28T13:49:04+02:00">2022-12-28T13:49:04+02:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="red">
-  44.83%
+  44.64%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.48
+         2.47
        </span>
     </span> hits/line
     )
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>464</b> relevant lines,
+    <b>466</b> relevant lines,
     <span class="green"><b>208</b> lines covered</span> and
-    <span class="red"><b>256</b> lines missed. </span>
+    <span class="red"><b>258</b> lines missed. </span>
     (<span class="red">
-  44.83%
+  44.64%
 </span>
 )
   </div>
@@ -183,10 +183,10 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#3ffaf9d7034bad77cbaf3da2bc2868eeee46e53b" class="src_link" title="app/controllers/styles_controller.rb">app/controllers/styles_controller.rb</a></td>
             <td class="red strong cell--number t-file__coverage">0.00 %</td>
-            <td class="cell--number">61</td>
-            <td class="cell--number">52</td>
+            <td class="cell--number">63</td>
+            <td class="cell--number">54</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">52</td>
+            <td class="cell--number">54</td>
             <td class="cell--number">0.00</td>
             
           </tr>
@@ -341,7 +341,7 @@
             <td class="cell--number">6</td>
             <td class="cell--number">6</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">12.50</td>
+            <td class="cell--number">12.67</td>
             
           </tr>
         
@@ -434,14 +434,14 @@
     <span class="group_name">Controllers</span>
     (<span class="covered_percent">
       <span class="red">
-  33.63%
+  33.43%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.54
+         1.53
        </span>
     </span> hits/line
     )
@@ -454,11 +454,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>333</b> relevant lines,
+    <b>335</b> relevant lines,
     <span class="green"><b>112</b> lines covered</span> and
-    <span class="red"><b>221</b> lines missed. </span>
+    <span class="red"><b>223</b> lines missed. </span>
     (<span class="red">
-  33.63%
+  33.43%
 </span>
 )
   </div>
@@ -572,10 +572,10 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#3ffaf9d7034bad77cbaf3da2bc2868eeee46e53b" class="src_link" title="app/controllers/styles_controller.rb">app/controllers/styles_controller.rb</a></td>
             <td class="red strong cell--number t-file__coverage">0.00 %</td>
-            <td class="cell--number">61</td>
-            <td class="cell--number">52</td>
+            <td class="cell--number">63</td>
+            <td class="cell--number">54</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">52</td>
+            <td class="cell--number">54</td>
             <td class="cell--number">0.00</td>
             
           </tr>
@@ -689,7 +689,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         6.71
+         6.72
        </span>
     </span> hits/line
     )
@@ -780,7 +780,7 @@
             <td class="cell--number">6</td>
             <td class="cell--number">6</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">12.50</td>
+            <td class="cell--number">12.67</td>
             
           </tr>
         
@@ -6075,9 +6075,9 @@
     
 
     <div class="t-line-summary">
-      <b>52</b> relevant lines.
+      <b>54</b> relevant lines.
       <span class="green"><b>0</b> lines covered</span> and
-      <span class="red"><b>52</b> lines missed.</span>
+      <span class="red"><b>54</b> lines missed.</span>
     </div>
 
     
@@ -6182,7 +6182,7 @@
 
             
 
-            <code class="ruby">    @beers = Beer.find_by(style_id: @style.id)</code>
+            <code class="ruby">    @beers = Beer.all.select { |beer| beer.style_id == @style.id }</code>
           </li>
         </div>
       
@@ -6314,7 +6314,7 @@
 
             
 
-            <code class="ruby">    respond_to do |format|</code>
+            <code class="ruby">    @beers = Beer.all.select { |beer| beer.style_id == @style.id }</code>
           </li>
         </div>
       
@@ -6325,7 +6325,7 @@
 
             
 
-            <code class="ruby">      if @style.save</code>
+            <code class="ruby">    respond_to do |format|</code>
           </li>
         </div>
       
@@ -6336,7 +6336,7 @@
 
             
 
-            <code class="ruby">        format.html { redirect_to style_url(@style), notice: &quot;Style was successfully created.&quot; }</code>
+            <code class="ruby">      if @style.save</code>
           </li>
         </div>
       
@@ -6347,7 +6347,7 @@
 
             
 
-            <code class="ruby">        format.json { render :show, status: :created, location: @style }</code>
+            <code class="ruby">        format.html { redirect_to style_url(@style), notice: &quot;Style was successfully created.&quot; }</code>
           </li>
         </div>
       
@@ -6358,7 +6358,7 @@
 
             
 
-            <code class="ruby">      else</code>
+            <code class="ruby">        format.json { render :show, status: :created, location: @style }</code>
           </li>
         </div>
       
@@ -6369,7 +6369,7 @@
 
             
 
-            <code class="ruby">        format.html { render :new, status: :unprocessable_entity }</code>
+            <code class="ruby">      else</code>
           </li>
         </div>
       
@@ -6380,7 +6380,7 @@
 
             
 
-            <code class="ruby">        format.json { render json: @style.errors, status: :unprocessable_entity }</code>
+            <code class="ruby">        format.html { render :new, status: :unprocessable_entity }</code>
           </li>
         </div>
       
@@ -6391,7 +6391,7 @@
 
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby">        format.json { render json: @style.errors, status: :unprocessable_entity }</code>
           </li>
         </div>
       
@@ -6402,7 +6402,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">      end</code>
           </li>
         </div>
       
@@ -6413,29 +6413,29 @@
 
             
 
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="31">
+            
+            
+
+            
+
             <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="31">
+          <li class="never" data-hits="" data-linenumber="32">
             
             
 
             
 
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="32">
-            
-            
-
-            
-
-            <code class="ruby">  def update</code>
           </li>
         </div>
       
@@ -6446,7 +6446,7 @@
 
             
 
-            <code class="ruby">    respond_to do |format|</code>
+            <code class="ruby">  def update</code>
           </li>
         </div>
       
@@ -6457,7 +6457,7 @@
 
             
 
-            <code class="ruby">      if style_params[:name].nil? &amp;&amp; @style.update(style_params)</code>
+            <code class="ruby">    @beers = Beer.all.select { |beer| beer.style_id == @style.id }</code>
           </li>
         </div>
       
@@ -6468,7 +6468,7 @@
 
             
 
-            <code class="ruby">        format.html { redirect_to @style, notice: &#39;Style was successfully updated.&#39; }</code>
+            <code class="ruby">    respond_to do |format|</code>
           </li>
         </div>
       
@@ -6479,7 +6479,7 @@
 
             
 
-            <code class="ruby">        format.json { head :no_content }</code>
+            <code class="ruby">      if style_params[:name].nil? &amp;&amp; @style.update(style_params)</code>
           </li>
         </div>
       
@@ -6490,7 +6490,7 @@
 
             
 
-            <code class="ruby">      else</code>
+            <code class="ruby">        format.html { redirect_to @style, notice: &#39;Style was successfully updated.&#39; }</code>
           </li>
         </div>
       
@@ -6501,7 +6501,7 @@
 
             
 
-            <code class="ruby">        format.html { redirect_to @style, notice: &quot;Unauthorized&quot; }</code>
+            <code class="ruby">        format.json { head :no_content }</code>
           </li>
         </div>
       
@@ -6512,7 +6512,7 @@
 
             
 
-            <code class="ruby">        format.json { render json: @style.errors, status: :unprocessable_entity }</code>
+            <code class="ruby">      else</code>
           </li>
         </div>
       
@@ -6523,7 +6523,7 @@
 
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby">        format.html { redirect_to @style, notice: &quot;Unauthorized&quot; }</code>
           </li>
         </div>
       
@@ -6534,7 +6534,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">        format.json { render json: @style.errors, status: :unprocessable_entity }</code>
           </li>
         </div>
       
@@ -6545,78 +6545,12 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">      end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="43">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="44">
-            
-            
-
-            
-
-            <code class="ruby">  def destroy</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="45">
-            
-            
-
-            
-
-            <code class="ruby">    @style.destroy</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="46">
-            
-            
-
-            
-
-            <code class="ruby">    respond_to do |format|</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="47">
-            
-            
-
-            
-
-            <code class="ruby">      format.html { redirect_to styles_url, notice: &quot;Style was successfully destroyed.&quot; }</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="48">
-            
-            
-
-            
-
-            <code class="ruby">      format.json { head :no_content }</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="49">
+          <li class="missed" data-hits="0" data-linenumber="43">
             
             
 
@@ -6627,7 +6561,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="50">
+          <li class="missed" data-hits="0" data-linenumber="44">
             
             
 
@@ -6638,7 +6572,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="51">
+          <li class="never" data-hits="" data-linenumber="45">
             
             
 
@@ -6649,13 +6583,79 @@
         </div>
       
         <div>
+          <li class="missed" data-hits="0" data-linenumber="46">
+            
+            
+
+            
+
+            <code class="ruby">  def destroy</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="47">
+            
+            
+
+            
+
+            <code class="ruby">    @style.destroy</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="48">
+            
+            
+
+            
+
+            <code class="ruby">    respond_to do |format|</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="49">
+            
+            
+
+            
+
+            <code class="ruby">      format.html { redirect_to styles_url, notice: &quot;Style was successfully destroyed.&quot; }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="50">
+            
+            
+
+            
+
+            <code class="ruby">      format.json { head :no_content }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="51">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
           <li class="missed" data-hits="0" data-linenumber="52">
             
             
 
             
 
-            <code class="ruby">  private</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -6677,34 +6677,12 @@
 
             
 
-            <code class="ruby">  def set_style</code>
+            <code class="ruby">  private</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="55">
-            
-            
-
-            
-
-            <code class="ruby">    @style = Style.find(params[:id])</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="56">
-            
-            
-
-            
-
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="57">
+          <li class="never" data-hits="" data-linenumber="55">
             
             
 
@@ -6715,29 +6693,29 @@
         </div>
       
         <div>
+          <li class="missed" data-hits="0" data-linenumber="56">
+            
+            
+
+            
+
+            <code class="ruby">  def set_style</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="57">
+            
+            
+
+            
+
+            <code class="ruby">    @style = Style.find(params[:id])</code>
+          </li>
+        </div>
+      
+        <div>
           <li class="missed" data-hits="0" data-linenumber="58">
-            
-            
-
-            
-
-            <code class="ruby">  def style_params</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="59">
-            
-            
-
-            
-
-            <code class="ruby">    params.require(:style).permit(:name, :description)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="60">
             
             
 
@@ -6748,7 +6726,51 @@
         </div>
       
         <div>
+          <li class="never" data-hits="" data-linenumber="59">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="60">
+            
+            
+
+            
+
+            <code class="ruby">  def style_params</code>
+          </li>
+        </div>
+      
+        <div>
           <li class="missed" data-hits="0" data-linenumber="61">
+            
+            
+
+            
+
+            <code class="ruby">    params.require(:style).permit(:name, :description)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="62">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="63">
             
             
 
@@ -8865,8 +8887,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="13" data-linenumber="5">
-            <span class="hits">13</span>
+          <li class="covered" data-hits="14" data-linenumber="5">
+            <span class="hits">14</span>
             
 
             

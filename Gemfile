@@ -17,7 +17,10 @@ end
 group :production do
    gem 'pg'
 end
-
+# For styles
+gem 'bootstrap', '~> 5.2.0'
+gem 'jquery-rails'
+gem 'mini_racer'
 # For HTTP calls  https://github.com/jnunemaker/httparty
 gem 'httparty'
 

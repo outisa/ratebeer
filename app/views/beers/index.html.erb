@@ -1,5 +1,3 @@
-<p style="color: green"><%= notice %></p>
-
 <h1>Beers</h1>
 
 <div id="beers">
@@ -19,6 +17,14 @@
         <strong>Brewery:</strong>
         <%= link_to beer.brewery.name, beer.brewery %>
       </p>
+    <% if beer.ratings %>
+      <p><%= 
+        "Beer has "
+        .concat(pluralize(beer.ratings.count,'rating'))
+        .concat(" with an average of ")
+        .concat(beer.average_rating.to_s)
+      %></p>
+    <% end %>
     </div>
   <% end %>
 </div>
