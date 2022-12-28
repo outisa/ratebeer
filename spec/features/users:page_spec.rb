@@ -34,10 +34,12 @@ describe "User" do
     }.to change{User.count}.by(1)
   end
 end
+
 describe "User page shown correctly" do
   let!(:brewery) { FactoryBot.create :brewery, name: "Koff" }
-  let!(:beer1) { FactoryBot.create :beer, name: "iso 3", brewery:brewery }
-  let!(:beer2) { FactoryBot.create :beer, name: "Karhu", brewery:brewery }
+  let!(:style) { FactoryBot.create :style, name: "Lager" }
+  let!(:beer1) { FactoryBot.create :beer, name: "iso 3", style: style, brewery:brewery }
+  let!(:beer2) { FactoryBot.create :beer, name: "Karhu", style: style, brewery:brewery }
   let!(:user) { FactoryBot.create :user }
   let!(:user2) { FactoryBot.create :user, username: 'Minna' }
   let!(:r1) { FactoryBot.create :rating, beer: beer1, score: 20, user: user }
