@@ -6,6 +6,7 @@ class StylesController < ApplicationController
   end
 
   def show
+    @beers = Beer.find_by(style_id: @style.id)
   end
 
   def new
