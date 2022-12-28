@@ -20,8 +20,7 @@ describe "Places" do
     fill_in('city', with: 'kumpula')
     click_button "Search"
     expect(page).to have_content "Current beer weather in Kumpula, Finland"
-    expect(page).to have_content "Temperature: 18 Celsius"
-    expect(page).to have_content "Feels like: 17 Celsius"
+    expect(page).to have_content "Temperature: 18 Celsius and it feels like 17 Celsius"
     expect(page).to have_content "Wind: 0, direction NNW"
     expect(page).to have_content "Oljenkorsi"
   end
@@ -46,8 +45,7 @@ describe "Places" do
     fill_in('city', with: 'hamburg')
     click_button "Search"
     expect(page).to have_content "Current beer weather in Hamburg, Germany"
-    expect(page).to have_content "Temperature: 18 Celsius"
-    expect(page).to have_content "Feels like: 13 Celsius"
+    expect(page).to have_content "Temperature: 18 Celsius and it feels like 13 Celsius"
     expect(page).to have_content "Wind: 12, direction NW"
     expect(page).to have_content "Alster"
     expect(page).to have_content "Bar Wedel"
