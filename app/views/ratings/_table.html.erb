@@ -9,7 +9,7 @@
     <% list_object.each do |object| %>
     <tr id="<%= dom_id object %>">
       <td><%= object.name %></td>
-      <td><%= object.average_rating.to_s %></td>
+      <td><%= round(object.average_rating).to_s %></td>
     </tr>
     <% end %>
   </tbody>

@@ -24,7 +24,7 @@ describe "Rating" do
 
     expect(user.ratings.count).to eq(1)
     expect(beer1.ratings.count).to eq(1)
-    expect(beer1.average_rating).to eq(15.0)
+    expect(beer1.average_rating.round(1)).to eq(15.0)
   end
 end
 

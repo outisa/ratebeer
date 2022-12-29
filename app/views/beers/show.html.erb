@@ -19,7 +19,7 @@
       "Beer has "
       .concat(pluralize(@beer.ratings.count,'rating'))
       .concat(" with an average of ")
-      .concat(@beer.average_rating.to_s)
+      .concat(round(@beer.average_rating).to_s)
     %></p>
   <% end %>
 </div>
@@ -32,10 +32,7 @@
     <%= form.submit "Create rating" %>
   <% end %>
 
-  <div>
-    <%= link_to "Edit this beer", edit_beer_path(@beer) %>
-    <%= button_to "Destroy this beer", @beer, method: :delete, class:"btn btn-danger" %>
-  </div>
+<%= edit_and_destroy_buttons(@beer) %>
 <% end %>
 <div>
   <%= link_to "Back to beers", beers_path %> |

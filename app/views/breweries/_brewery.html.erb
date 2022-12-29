@@ -28,7 +28,7 @@
       "Brewery has "
       .concat(pluralize(brewery.ratings.count,'rating'))
       .concat(" with an average of ")
-      .concat(brewery.average_rating.to_s)
+      .concat(round(brewery.average_rating).to_s)
     %></p>
   <% end %>
 </div>

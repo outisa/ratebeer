@@ -12,7 +12,7 @@
         "Has made "
         .concat(pluralize(@user.ratings.count,'rating'))
         .concat(", average rating ")
-        .concat(@user.average_rating.to_s)
+        .concat(round(@user.average_rating).to_s)
       %></p>
       <p><%= 
         "Favorite style is "
@@ -50,6 +50,8 @@
   <%= link_to "Back to users", users_path %>
   <% if @user == current_user%>
     | <%= link_to "Edit this user", edit_user_path(@user) %>
-    <%= button_to "Destroy this user", @user, method: :delete,  class:"btn btn-danger" %>
+    <%= button_to('Destroy this user', @user,  method: :delete,
+                                      form: { data: { turbo_confirm: "Are you sure ?" } },
+                                      class: "btn btn-danger")%>
   <% end %>
 </div>

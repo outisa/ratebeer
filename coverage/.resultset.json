@@ -4,6 +4,19 @@
       "/home/ousavola/wepa_ruby_on_rails/ratebeer/app/helpers/application_helper.rb": {
         "lines": [
           1,
+          1,
+          1,
+          null,
+          0,
+          0,
+          null,
+          null,
+          0,
+          null,
+          null,
+          1,
+          16,
+          null,
           null
         ]
       },
@@ -231,7 +244,7 @@
           null,
           null,
           1,
-          179,
+          178,
           null,
           150,
           null,
@@ -943,6 +956,6 @@
         }
       }
     },
-    "timestamp": 1672313096
+    "timestamp": 1672317688
   }
 }
