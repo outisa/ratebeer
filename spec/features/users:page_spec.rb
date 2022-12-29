@@ -55,20 +55,20 @@ describe "User page shown correctly" do
     visit user_path user
     expect(page).to have_content "Ratings:"
     expect(page).to have_content "Has made 3 ratings, average rating 24.7"
-    expect(page).to have_content "iso 3 20"
-    expect(page).to have_content "iso 3 44"
-    expect(page).not_to have_content "iso 3 9 "
-    expect(page).to have_content "Karhu 10"
+    expect(page).to have_content "iso 3, score: 20"
+    expect(page).to have_content "iso 3, score: 44"
+    expect(page).not_to have_content "iso 3, score: 9 "
+    expect(page).to have_content "Karhu, score: 10"
   end
 
   it "Signed in user can remove rating" do
     visit user_path user
     expect(page).to have_content "Has made 3 ratings, average rating 24.7"
-    expect(page).to have_content "iso 3 20"
+    expect(page).to have_content "iso 3, score: 20"
     expect(user.ratings.count).to eq(3)
     page.first(:link, "delete").click
     expect(page).to have_content "Has made 2 ratings, average rating 27.0"
-    expect(page).not_to have_content "iso 3 20"
+    expect(page).not_to have_content "iso 3, score: 20"
     expect(user.ratings.count).to eq(2)
   end
 

@@ -39,18 +39,21 @@ describe "Ratings are shown correctly" do
   let!(:r2) { FactoryBot.create :rating, beer: beer1, score: 44, user: user }
   let!(:r3) { FactoryBot.create :rating, beer: beer1, score: 9, user: user2 }
   let!(:r4) { FactoryBot.create :rating, beer: beer2, score: 10, user: user }
-  
+  let!(:r5) { FactoryBot.create :rating, beer: beer2, score: 18, user: user }
+  let!(:r6) { FactoryBot.create :rating, beer: beer1, score: 50, user: user2 }
   before :each do
     sign_in(username: "Pekka", password: "Foobar1")
   end
 
   it "Ratings are shown correctly" do
     visit ratings_path
-    expect(page).to have_content "List of ratings"
-    expect(page).to have_content "Number of ratings: 4"
-    expect(page).to have_content "iso 3 20 Pekka"
-    expect(page).to have_content "iso 3 44 Pekka"
-    expect(page).to have_content "iso 3 9 Minna"
-    expect(page).to have_content "Karhu 10 Pekka"
+    expect(page).to have_content "Ratings"
+    expect(page).to have_content "Recent ratings"
+    expect(page).to have_content "iso 3, score: 50"
+    expect(page).to have_content "iso 3, score: 44"
+    expect(page).to have_content "iso 3, score: 9"
+    expect(page).to have_content "Karhu, score: 10"
+    expect(page).to have_content "Karhu, score: 18"
+    expect(page).not_to have_content "iso3, score: 20"
   end
 end

@@ -8,10 +8,18 @@ class Brewery < ApplicationRecord
   has_many :beers, dependent: :destroy
   has_many :ratings, through: :beers
 
+  scope :active, -> { where active: true }
+  scope :retired, -> { where active: [nil, false] }
+
   def year_in_future
     return unless year.present? && year > Time.now.year
 
     errors.add(:year, 'Year cannot be in the future.')
+  end
+
+  def self.top(nbr)
+    sorted_by_rating_in_desc_order = Brewery.all.sort_by(&:average_rating).reverse!
+    sorted_by_rating_in_desc_order[0..(nbr - 1)]
   end
 
   def print_report

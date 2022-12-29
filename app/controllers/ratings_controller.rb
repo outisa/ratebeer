@@ -3,6 +3,11 @@ class RatingsController < ApplicationController
   # Get /ratings
   def index
     @ratings = Rating.all
+    @ratings_recent = Rating.recent
+    @top_users = User.top 3
+    @top_breweries = Brewery.top 3
+    @top_beers = Beer.top 3
+    @top_styles = Style.top 3
   end
 
   # GET /rating/1

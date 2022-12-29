@@ -15,11 +15,7 @@
         <th><%= link_to beer.name, beer %></th>
         <th><%= link_to beer.style.name, beer.style %></th>
         <th><%= link_to beer.brewery.name, beer.brewery %></th>
-        <% if beer.ratings %>
-          <th><%= beer.average_rating.to_s%></th>
-        <% else %>
-        <th>0.0</th>
-        <% end %>
+        <th><%= beer.average_rating.to_s%></th>
       </tr>
     <% end %>
   </tbody>

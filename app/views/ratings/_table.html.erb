@@ -1,0 +1,16 @@
+<Table class="table">
+  <thead>
+    <tr>
+      <td><%= title %></td>
+      <td>Average</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% list_object.each do |object| %>
+    <tr id="<%= dom_id object %>">
+      <td><%= object.name %></td>
+      <td><%= object.average_rating.to_s %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</Table>

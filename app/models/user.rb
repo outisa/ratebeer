@@ -40,6 +40,11 @@ class User < ApplicationRecord
     Beer.includes(:style).joins(:style).find_by(id: beer).style.name
   end
 
+  def self.top(nbr)
+    sorted_by_rating_in_desc_order = User.all.sort_by(&:average_rating).reverse!
+    sorted_by_rating_in_desc_order[0..(nbr - 1)]
+  end
+
   def favorite_brewery
     return nil if ratings.empty?
 
