@@ -1,28 +1,10 @@
 <div id="<%= dom_id @user %>">
-  <p>
-    <strong>Username:</strong>
-  </p>
-  <p>
-    <%= @user.username %>
-  </p>
-    <% if @user.ratings.empty? %>
-      <p>User has made zero ratings<p>
-    <% else %>
-      <p><%= 
-        "Has made "
-        .concat(pluralize(@user.ratings.count,'rating'))
-        .concat(", average rating ")
-        .concat(round(@user.average_rating).to_s)
-      %></p>
-      <p><%= 
-        "Favorite style is "
-        .concat(@user.favorite_style)
-      %></p>
-      <p><%= 
-        "Favorite brewery is "
-        .concat(@user.favorite_brewery.name)
-      %></p>
-    <% end %>
+  <%= render @user %>
+  <% if current_user && current_user.admin %>
+    <%= button_to('Change activity', change_activity_user_path(@user.id),  method: :post,
+                            form: { data: { turbo_confirm: "Are you sure ?" } },
+                            class: "btn btn-danger")%>
+  <% end %>
   <p>
     <strong>Member of:</strong>
   </p>
@@ -49,8 +31,8 @@
 
   <%= link_to "Back to users", users_path %>
   <% if @user == current_user%>
-    | <%= link_to "Edit this user", edit_user_path(@user) %>
-    <%= button_to('Destroy this user', @user,  method: :delete,
+    <%= link_to "Edit this user", edit_user_path(@user) %>
+    <%= button_to('Destroy this user', @user,  method: :post,
                                       form: { data: { turbo_confirm: "Are you sure ?" } },
                                       class: "btn btn-danger")%>
   <% end %>

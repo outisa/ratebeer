@@ -1,6 +1,8 @@
 class StylesController < ApplicationController
   before_action :set_style, only: %i[show edit update destroy]
   before_action :ensure_that_signed_in, except: [:show, :index]
+  before_action :ensure_that_admin, except: [:index, :show, :update, :edit, :new, :create]
+
   def index
     @styles = Style.all
   end

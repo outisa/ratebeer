@@ -64,6 +64,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def change_activity
+    if current_user?.admin
+      user = User.find(params[:id])
+      user.update_attribute :active, !user.active
+      new_status = user.active? ? "activited" : "deactivated"
+
+      redirect_to user, notice: "User's status is #{new_status}."
+    else
+      redirect_to user
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

@@ -1,7 +1,28 @@
 <div id="<%= dom_id user %>">
   <p>
     <strong>Username:</strong>
+  </p>
+  <p>
     <%= user.username %>
   </p>
 
+  <% if current_user && current_user.admin && !user.active %>
+   <p><span class="badge bg-primary">closed</span></p>
+  <% end %>
+  <p><%= 
+    "Has made "
+    .concat(pluralize(user.ratings.count,'rating'))
+    .concat(", average rating ")
+    .concat(round(user.average_rating).to_s)
+  %></p>
+  <% if !user.ratings.empty? %>
+    <p><%= 
+      "Favorite style is "
+      .concat(user.favorite_style)
+    %></p>
+    <p><%= 
+      "Favorite brewery is "
+      .concat(user.favorite_brewery.name)
+    %></p>
+  <% end %>
 </div>

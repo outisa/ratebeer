@@ -2,5 +2,7 @@
 
 <div>
   <%= link_to "Back to memberships", memberships_path %>
-  <%= edit_and_destroy_buttons(@membership) %>
+  <%= button_to('Destroy', @membership,  method: :delete,
+                                form: { data: { turbo_confirm: "Are you sure ?" } },
+                                class: "btn btn-danger") unless current_user.nil? %>
 </div>
