@@ -35,7 +35,9 @@
     <thead>
       <tr>
         <th>Brewery</th>
-        <th>Year</th>
+        <th>Founded</th>
+        <th>Beers</th>
+        <th>Rating</th>
         <th>Status</th>
       </tr>
     </thead>
@@ -43,7 +45,9 @@
       <% @retired_breweries.each do |brewery| %>
         <tr id="<%= dom_id brewery %>">
           <th><%= link_to brewery.name, brewery %></th>
-          <th><%= brewery.year %></th>
+          <td><%= brewery.year %></td>
+          <td><%= brewery.beers.count %></td>
+          <td><%= round(brewery.average_rating) %></td>
           <th><span class="badge bg-secondary">retired</span></th>
         </tr>
       <% end %>
