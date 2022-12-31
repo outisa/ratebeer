@@ -1,4 +1,5 @@
 <div id="<%= dom_id @beer %>">
+<% cache @beer do %>
   <h2>
     <%= @beer.name %>
   </h2>
@@ -23,6 +24,8 @@
     %></p>
   <% end %>
 </div>
+<% end %>
+
 <% if current_user %>
   <h4>give a rating:</h4>
 

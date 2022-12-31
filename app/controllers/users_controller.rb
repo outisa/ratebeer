@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
+  before_action :ensure_that_admin, only: %i[change_activity]
 
   # GET /users or /users.json
   def index
@@ -65,15 +66,11 @@ class UsersController < ApplicationController
   end
 
   def change_activity
-    if current_user?.admin
-      user = User.find(params[:id])
-      user.update_attribute :active, !user.active
-      new_status = user.active? ? "activited" : "deactivated"
+    user = User.find(params[:id])
+    user.update_attribute :active, !user.active
+    new_status = user.active? ? "activited" : "deactivated"
 
-      redirect_to user, notice: "User's status is #{new_status}."
-    else
-      redirect_to user
-    end
+    redirect_to user, notice: "User's status is #{new_status}."
   end
 
   private

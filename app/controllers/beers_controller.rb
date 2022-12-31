@@ -7,17 +7,18 @@ class BeersController < ApplicationController
   before_action :set_breweries_and_styles_for_template, only: %i[create edit new]
   before_action :ensure_that_signed_in, except: [:index, :show, :list]
   before_action :ensure_that_admin, except: [:index, :show, :update, :edit, :new, :create, :list]
-
+  before_action :fragment_expiration, only: %i[create destroy update]
   def list
   end
 
   # GET /beers or /beers.json
   def index
+    @order = params[:order] || 'name'
+    return if request.format.html? && fragment_exist?("beerlist-#{@order}")
+
     @beers = Beer.includes(:brewery, :style, :ratings).all
 
-    order = params[:order] || 'name'
-
-    @beers = case order
+    @beers = case @order
              when "name" then @beers.sort_by(&:name)
              when "brewery" then @beers.sort_by { |b| b.brewery.name }
              when "style" then @beers.sort_by { |b| b.style.name }
@@ -80,6 +81,10 @@ class BeersController < ApplicationController
   end
 
   private
+
+  def fragment_expiration
+    %w[beerlist-name beerlist-brewery beerlist-style].each{ |f| expire_fragment(f) }
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_beer

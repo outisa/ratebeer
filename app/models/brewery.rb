@@ -1,5 +1,6 @@
 class Brewery < ApplicationRecord
   include RatingAverage
+  extend Top
   validates :name, length: { minimum: 1 }
   validates :year, numericality: {  greater_than_or_equal_to: 1040,
                                     only_integer: true }
@@ -17,9 +18,8 @@ class Brewery < ApplicationRecord
     errors.add(:year, 'Year cannot be in the future.')
   end
 
-  def self.top(nbr)
-    sorted_by_rating_in_desc_order = Brewery.all.sort_by(&:average_rating).reverse!
-    sorted_by_rating_in_desc_order[0..(nbr - 1)]
+  def self.top(how_many)
+    Top.calculate_top(Brewery, how_many)
   end
 
   def print_report

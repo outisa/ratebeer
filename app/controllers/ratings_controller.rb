@@ -2,12 +2,11 @@ class RatingsController < ApplicationController
   before_action :set_rating, only: %i[destroy]
   # Get /ratings
   def index
-    @ratings = Rating.all
-    @ratings_recent = Rating.recent
-    @top_users = User.top 3
-    @top_breweries = Brewery.top 3
-    @top_beers = Beer.top 3
-    @top_styles = Style.top 3
+    @top_beers = Rails.cache.fetch("beer top 3", expires_in: 10.minutes) { Beer.top(3) }
+    @top_users = Rails.cache.fetch("user top 3", expires_in: 10.minutes) { User.top(3) }
+    @top_styles = Rails.cache.fetch("style top 3", expires_in: 10.minutes){ Style.top(3) }
+    @top_breweries = Rails.cache.fetch("brewery top 3", expires_in: 10.minutes) { Brewery.top(3) }
+    @ratings_recent = Rails.cache.fetch("rating-recent", expires_in: 10.minutes) { Rating.recent }
   end
 
   # GET /rating/1

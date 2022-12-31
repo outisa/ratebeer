@@ -1,14 +1,17 @@
 class BreweriesController < ApplicationController
   before_action :set_brewery, only: %i[show edit update destroy]
   before_action :ensure_that_signed_in, except: [:index, :show, :list]
-  before_action :ensure_that_admin, except: [:index, :show, :update, :edit, :new, :create, :list]
+  before_action :ensure_that_admin, except: [:index, :show, :update, :edit, :new, :create, :list, :toggle_activity]
+  before_action :fragment_expiration, only: %i[create destroy update toggle_activity]
 
   def list
   end
 
   # GET /breweries or /breweries.json
   def index
-    @breweries = Brewery.all
+    return if request.format.html? && fragment_exist?("breweries")
+
+    @breweries = Brewery.includes(:Beer, :Rating).all
     @active_breweries = Brewery.active
     @retired_breweries = Brewery.retired
   end
@@ -74,6 +77,10 @@ class BreweriesController < ApplicationController
   end
 
   private
+
+  def fragment_expiration
+    %w[active-brewerylist retired-brewerylist].each{ |f| expire_fragment(f) }
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_brewery
