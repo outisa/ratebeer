@@ -2,9 +2,11 @@ module RatingAverage
   extend ActiveSupport::Concern
 
   def average_rating
-    return 0 if ratings.empty?
+    # tehdään laskelmat muistiin haettujen olueen liittyvien ratings-olioiden avulla
+    rating_count = ratings.size
 
-    avg = ratings.pluck(:score).reduce(0) { |s, score| s + score } / ratings.count.to_f
-    avg.to_f
+    return 0 if rating_count == 0
+
+    ratings.map(&:score).sum / rating_count
   end
 end
