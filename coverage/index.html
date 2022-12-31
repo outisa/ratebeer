@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2022-12-31T16:52:16+02:00">2022-12-31T16:52:16+02:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2022-12-31T18:05:28+02:00">2022-12-31T18:05:28+02:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -30,7 +30,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.75
+         2.62
        </span>
     </span> hits/line
     )
@@ -337,11 +337,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#e68e6e465c56fcf010988de629fd4b18c9c99fa4" class="src_link" title="app/models/concerns/rating_average.rb">app/models/concerns/rating_average.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">10</td>
+            <td class="cell--number">12</td>
             <td class="cell--number">6</td>
             <td class="cell--number">6</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">25.67</td>
+            <td class="cell--number">14.00</td>
             
           </tr>
         
@@ -689,7 +689,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         6.76
+         6.03
        </span>
     </span> hits/line
     )
@@ -776,11 +776,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#e68e6e465c56fcf010988de629fd4b18c9c99fa4" class="src_link" title="app/models/concerns/rating_average.rb">app/models/concerns/rating_average.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">10</td>
+            <td class="cell--number">12</td>
             <td class="cell--number">6</td>
             <td class="cell--number">6</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">25.67</td>
+            <td class="cell--number">14.00</td>
             
           </tr>
         
@@ -2674,7 +2674,7 @@
 
             
 
-            <code class="ruby">    @beers = Beer.all</code>
+            <code class="ruby">    @beers = Beer.includes(:brewery, :style, :ratings).all</code>
           </li>
         </div>
       
@@ -7423,7 +7423,7 @@
 
             
 
-            <code class="ruby">    @users = User.all</code>
+            <code class="ruby">    @users = User.includes(:ratings).all</code>
           </li>
         </div>
       
@@ -9888,18 +9888,29 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="29" data-linenumber="5">
+          <li class="never" data-hits="" data-linenumber="5">
+            
+            
+
+            
+
+            <code class="ruby">    # tehdään laskelmat muistiin haettujen olueen liittyvien ratings-olioiden avulla</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="29" data-linenumber="6">
             <span class="hits">29</span>
             
 
             
 
-            <code class="ruby">    return 0 if ratings.empty?</code>
+            <code class="ruby">    rating_count = ratings.size</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="6">
+          <li class="never" data-hits="" data-linenumber="7">
             
             
 
@@ -9910,24 +9921,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="99" data-linenumber="7">
-            <span class="hits">99</span>
+          <li class="covered" data-hits="29" data-linenumber="8">
+            <span class="hits">29</span>
             
 
             
 
-            <code class="ruby">    avg = ratings.pluck(:score).reduce(0) { |s, score| s + score } / ratings.count.to_f</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="23" data-linenumber="8">
-            <span class="hits">23</span>
-            
-
-            
-
-            <code class="ruby">    avg.to_f</code>
+            <code class="ruby">    return 0 if rating_count == 0</code>
           </li>
         </div>
       
@@ -9938,12 +9938,34 @@
 
             
 
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="23" data-linenumber="10">
+            <span class="hits">23</span>
+            
+
+            
+
+            <code class="ruby">    ratings.map(&amp;:score).sum / rating_count.to_f</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="11">
+            
+            
+
+            
+
             <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="10">
+          <li class="never" data-hits="" data-linenumber="12">
             
             
 
