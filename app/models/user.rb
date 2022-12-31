@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   include RatingAverage
+  extend Top
   has_secure_password
   PASSWORD_REQUIREMENTS = /\A
     (?=.{4,})
@@ -40,9 +41,8 @@ class User < ApplicationRecord
     Beer.includes(:style).joins(:style).find_by(id: beer).style.name
   end
 
-  def self.top(nbr)
-    sorted_by_rating_in_desc_order = User.all.sort_by(&:average_rating).reverse!
-    sorted_by_rating_in_desc_order[0..(nbr - 1)]
+  def self.top(has_many)
+    Top.calculate_top(User, has_many)
   end
 
   def favorite_brewery
