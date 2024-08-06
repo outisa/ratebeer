@@ -28,7 +28,7 @@ jobs:
       BEERMAPPING_APIKEY: ${{ secrets.BEERMAPPING_APIKEY }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       # Add or replace dependency steps here
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
@@ -40,7 +40,7 @@ jobs:
    runs-on: ubuntu-22.04
    steps:
      - name: Checkout code
-       uses: actions/checkout@v3
+       uses: actions/checkout@v4
      - name: Install Ruby and gems
        uses: ruby/setup-ruby@v1
        with:
@@ -49,14 +49,3 @@ jobs:
        uses: andrewmcodes-archive/rubocop-linter-action@v3.3.0
        env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  build:
-    name: 'Publish'
-    needs: [test, lint]
-    runs-on: ubuntu-22.04
-    steps:
-      - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.12.12
-        with:
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
-          heroku_email: ${{ secrets.HEROKU_EMAIL }}
